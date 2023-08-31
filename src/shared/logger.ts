@@ -17,7 +17,7 @@ const logsFormat = printf(({ level, message, label, timestamp }) => {
 const logger = createLogger({
   level: 'info',
   format: combine(
-    label({ label: 'University Managment' }),
+    label({ label: 'Book-catalog' }),
     timestamp(),
     logsFormat,
     prettyPrint()
@@ -44,7 +44,7 @@ const logger = createLogger({
 const errorLogger = createLogger({
   level: 'error',
   format: combine(
-    label({ label: 'University Managment' }),
+    label({ label: 'Book-catalog' }),
     timestamp(),
     logsFormat,
     prettyPrint()
