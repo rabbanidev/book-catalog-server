@@ -11,4 +11,10 @@ router.post(
   AuthController.signUp
 );
 
+router.post(
+  '/signin',
+  validateRequest(AuthValidation.signinWithZodSchema),
+  AuthController.signIn
+);
+
 export const AuthRoutes = router;
