@@ -1,0 +1,6 @@
+{
+  message: 'Server running on port 6000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-01T05:32:14.015Z'
+}

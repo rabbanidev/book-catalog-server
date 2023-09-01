@@ -1,0 +1,24 @@
+{
+  message: 'Server running on port 6000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-01T04:56:50.119Z'
+}
+{
+  message: 'Server running on port 6000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-01T04:57:12.261Z'
+}
+{
+  message: 'Server running on port 6000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-01T04:57:28.517Z'
+}
+{
+  message: 'Server running on port 6000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-01T04:57:37.003Z'
+}
