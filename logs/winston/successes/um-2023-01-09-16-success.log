@@ -16,3 +16,9 @@
   label: 'Book-catalog',
   timestamp: '2023-09-01T10:12:09.827Z'
 }
+{
+  message: 'Server running on port 6000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-01T10:12:13.577Z'
+}
