@@ -5,7 +5,7 @@ import { AuthUtils } from './auth.utils';
 import ApiError from '../../../errors/ApiError';
 import httpStatus from 'http-status';
 
-const signUp = async (payload: User) => {
+const signUp = async (payload: User): Promise<Partial<User>> => {
   const exitUser = await AuthUtils.getUser(payload.email);
 
   if (exitUser) {
