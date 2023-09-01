@@ -3,7 +3,7 @@ import { z } from 'zod';
 const createCategoryWithZodSchema = z.object({
   body: z.object({
     title: z.string({
-      required_error: 'Category is required!',
+      required_error: 'Title is required!',
     }),
   }),
 });
