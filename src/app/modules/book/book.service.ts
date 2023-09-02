@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Book, Prisma } from '@prisma/client';
 import prisma from '../../../shared/prisma';
 import { IPaginationOptions } from '../../../interfaces/pagination';
@@ -89,7 +90,50 @@ const getAllBooks = async (
   });
 
   // Total documents
-  const total = await prisma.book.count();
+  const total = await prisma.book.count({
+    where: whereCondition,
+  });
+
+  // Total pages
+  const totalPage = paginationHelpers.calculateTotalPage(total, size);
+
+  return {
+    meta: {
+      page,
+      size,
+      total,
+      totalPage,
+    },
+    data: result,
+  };
+};
+
+const getBooksByCategory = async (
+  categoryId: string,
+  paginationOptions: IPaginationOptions
+): Promise<IGenericResponse<Book[]>> => {
+  // Paginations implementation
+  const { page, size, skip, sortConditions } =
+    paginationHelpers.calculatePagination(paginationOptions);
+
+  const result = await prisma.book.findMany({
+    where: {
+      categoryId,
+    },
+    skip,
+    take: size,
+    orderBy: sortConditions,
+    include: {
+      category: true,
+    },
+  });
+
+  // Total documents
+  const total = await prisma.book.count({
+    where: {
+      categoryId,
+    },
+  });
 
   // Total pages
   const totalPage = paginationHelpers.calculateTotalPage(total, size);
@@ -108,4 +152,5 @@ const getAllBooks = async (
 export const BookService = {
   createBook,
   getAllBooks,
+  getBooksByCategory,
 };
