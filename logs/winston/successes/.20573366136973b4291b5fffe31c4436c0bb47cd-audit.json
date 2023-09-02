@@ -84,6 +84,16 @@
             "date": 1693634512547,
             "name": "E:\\Web Application\\Next Level\\Assignment\\book-catalog-server\\logs\\winston\\successes\\um-2023-02-09-12-success.log",
             "hash": "f2a3f27b5a2f17b75afe3b17037fb9002215776022a0171c59150ed36532f66a"
+        },
+        {
+            "date": 1693638889485,
+            "name": "E:\\Web Application\\Next Level\\Assignment\\book-catalog-server\\logs\\winston\\successes\\um-2023-02-09-13-success.log",
+            "hash": "7b3248c267a653d76469b7f2be6a7290f0efcb2c3675c6ddb07fa5ccf765f7d7"
+        },
+        {
+            "date": 1693646224032,
+            "name": "E:\\Web Application\\Next Level\\Assignment\\book-catalog-server\\logs\\winston\\successes\\um-2023-02-09-15-success.log",
+            "hash": "6f259e6aa50bfa0fd52fcb61f0f535877bb6165fdd0e42e11d1a5f45b17c6122"
         }
     ],
     "hashType": "sha256"

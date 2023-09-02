@@ -74,11 +74,11 @@ model Reviews {
 }
 
 model Order {
-  id        String      @id @default(uuid())
-  // orderedBooks
-  status    OrderStatus @default(pending)
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  id           String      @id @default(uuid())
+  orderedBooks Json
+  status       OrderStatus @default(pending)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 
   userId String
   user   User   @relation(fields: [userId], references: [id])
