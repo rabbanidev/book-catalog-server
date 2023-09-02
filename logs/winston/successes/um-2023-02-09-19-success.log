@@ -40,3 +40,9 @@
   label: 'Book-catalog',
   timestamp: '2023-09-02T13:09:09.920Z'
 }
+{
+  message: 'Server running on port 4000',
+  level: 'info',
+  label: 'Book-catalog',
+  timestamp: '2023-09-02T13:09:24.765Z'
+}

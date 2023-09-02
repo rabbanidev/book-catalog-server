@@ -1,7 +1,7 @@
 {
   "name": "book-catalog",
   "version": "1.0.0",
-  "description": "i am creatingt he backend for a book Listing Application. The main focus is to implement CRUD operations, pagination and filtering using Prisma, Postgres and Express",
+  "description": "i am creating he backend for a book Listing Application. The main focus is to implement CRUD operations, pagination and filtering using Prisma, Postgres and Express",
   "main": "src/server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
