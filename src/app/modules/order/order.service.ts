@@ -4,6 +4,8 @@ import ApiError from '../../../errors/ApiError';
 import httpStatus from 'http-status';
 import { GlobalUtils } from '../../../shared/utils';
 import { IOrderCreateRequest } from './order.interface';
+import { JwtPayload } from 'jsonwebtoken';
+import { ENUM_USER_ROLE } from '../../../enum/enum';
 
 // const createOrder = async (
 //   payload: Prisma.OrderCreateInput,
@@ -73,7 +75,28 @@ const createOrder = async (
   throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create order!');
 };
 
-const getAllOrders = async (): Promise<Order[]> => {
+const getAllOrders = async (authUser: JwtPayload): Promise<Order[]> => {
+  if (authUser.role === ENUM_USER_ROLE.CUSTOMER) {
+    const result = await prisma.order.findMany({
+      where: {
+        userId: authUser.userId,
+      },
+      include: {
+        orderedBooks: {
+          select: {
+            quantity: true,
+            bookId: true,
+            book: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+    return result;
+  }
+
   const result = await prisma.order.findMany({
     include: {
       orderedBooks: {
