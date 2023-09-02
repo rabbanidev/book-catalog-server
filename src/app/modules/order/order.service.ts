@@ -116,7 +116,52 @@ const getAllOrders = async (authUser: JwtPayload): Promise<Order[]> => {
   return result;
 };
 
+const getOrder = async (
+  id: string,
+  authUser: JwtPayload
+): Promise<Order | null> => {
+  const { role, userId } = authUser;
+
+  let result = null;
+  if (role === ENUM_USER_ROLE.CUSTOMER) {
+    result = await prisma.order.findUnique({
+      where: {
+        id,
+        userId,
+      },
+      include: {
+        orderedBooks: {
+          select: {
+            quantity: true,
+            bookId: true,
+            book: true,
+          },
+        },
+      },
+    });
+  } else {
+    result = await prisma.order.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        orderedBooks: {
+          select: {
+            quantity: true,
+            bookId: true,
+            book: true,
+          },
+        },
+        user: true,
+      },
+    });
+  }
+
+  return result;
+};
+
 export const OrderService = {
   createOrder,
   getAllOrders,
+  getOrder,
 };
