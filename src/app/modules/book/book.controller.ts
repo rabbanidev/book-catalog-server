@@ -49,8 +49,44 @@ const getBooksByCategory = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getBook = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.getBook(req.params.id);
+
+  sendResponse<Book>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Book fetched successfully!',
+    data: result,
+  });
+});
+
+const updateBook = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.updateBook(req.params.id, req.body);
+
+  sendResponse<Book>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Book updated successfully!',
+    data: result,
+  });
+});
+
+const deleteBook = catchAsync(async (req: Request, res: Response) => {
+  const result = await BookService.deleteBook(req.params.id);
+
+  sendResponse<Book>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Book updated successfully!',
+    data: result,
+  });
+});
+
 export const BookController = {
   createBook,
   getAllBooks,
   getBooksByCategory,
+  getBook,
+  updateBook,
+  deleteBook,
 };
