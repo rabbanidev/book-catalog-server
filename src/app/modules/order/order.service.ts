@@ -73,6 +73,27 @@ const createOrder = async (
   throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create order!');
 };
 
+const getAllOrders = async (): Promise<Order[]> => {
+  const result = await prisma.order.findMany({
+    include: {
+      orderedBooks: {
+        select: {
+          quantity: true,
+          bookId: true,
+          book: true,
+        },
+      },
+      user: true,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return result;
+};
+
 export const OrderService = {
   createOrder,
+  getAllOrders,
 };
