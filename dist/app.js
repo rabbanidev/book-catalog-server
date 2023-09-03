@@ -9,6 +9,8 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const notFoundHandler_1 = __importDefault(require("./app/middlewares/notFoundHandler"));
 const globalErrorHandler_1 = __importDefault(require("./app/middlewares/globalErrorHandler"));
 const routes_1 = __importDefault(require("./app/routes"));
+const sendResponse_1 = __importDefault(require("./shared/sendResponse"));
+const http_status_1 = __importDefault(require("http-status"));
 const app = (0, express_1.default)();
 // cors use
 app.use((0, cors_1.default)());
@@ -19,9 +21,13 @@ app.use(express_1.default.urlencoded({ extended: true }));
 // Aplication routes
 app.use('/api/v1', routes_1.default);
 // Root Route
-// app.get('/', (req, res) => {
-//   res.status(200).json({ message: 'Hello' });
-// });
+app.get('/', (req, res) => {
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Wellcome to book catalog server',
+    });
+});
 // Global Error Hnadler
 app.use(globalErrorHandler_1.default);
 // Not Found Handler
