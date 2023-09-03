@@ -22,8 +22,8 @@ model User {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  reviews Reviews[]
-  orders  Order[]
+  orders           Order[]
+  reviewAndRatings ReviewAndRating[]
 
   @@map("users")
 }
@@ -52,13 +52,13 @@ model Book {
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id])
 
-  reviews      Reviews[]
-  orderedBooks OrderedBook[]
+  orderedBooks    OrderedBook[]
+  reviewAndRatins ReviewAndRating[]
 
   @@map("books")
 }
 
-model Reviews {
+model ReviewAndRating {
   id        String   @id @default(uuid())
   review    String
   rating    Int
@@ -71,7 +71,7 @@ model Reviews {
   bookId String
   book   Book   @relation(fields: [bookId], references: [id])
 
-  @@map("reviews")
+  @@map("review_and_ratings")
 }
 
 model Order {

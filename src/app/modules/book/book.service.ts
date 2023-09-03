@@ -156,6 +156,7 @@ const getBook = async (id: string): Promise<Book | null> => {
     },
     include: {
       category: true,
+      reviewAndRatins: true,
     },
   });
 

@@ -5,6 +5,7 @@ const book_route_1 = require("../modules/book/book.route");
 const category_route_1 = require("../modules/category/category.route");
 const order_route_1 = require("../modules/order/order.route");
 const profile_route_1 = require("../modules/profile/profile.route");
+const review_route_1 = require("../modules/review/review.route");
 const user_route_1 = require("../modules/user/user.route");
 const modulesRoutes = [
     {
@@ -30,6 +31,10 @@ const modulesRoutes = [
     {
         path: '/profile',
         route: profile_route_1.ProfileRoutes,
+    },
+    {
+        path: '/reviews',
+        route: review_route_1.ReviewRoutes,
     },
 ];
 exports.default = modulesRoutes;

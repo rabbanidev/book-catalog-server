@@ -147,6 +147,7 @@ const getBook = (id) => __awaiter(void 0, void 0, void 0, function* () {
         },
         include: {
             category: true,
+            reviewAndRatins: true,
         },
     });
     return result;
