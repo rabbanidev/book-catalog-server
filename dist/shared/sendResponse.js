@@ -2,11 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sendResponse = (res, payload) => {
     const responseData = {
-        statusCode: payload.statusCode,
         success: payload.success,
+        statusCode: payload.statusCode,
         message: payload.message || null,
         meta: payload.meta || null || undefined,
-        data: payload.data || null,
+        data: payload.data,
+        token: payload.token,
     };
     res.status(payload.statusCode).json(responseData);
 };

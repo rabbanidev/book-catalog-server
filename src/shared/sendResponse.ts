@@ -10,15 +10,17 @@ type ISendResponse<T> = {
     total: number;
   };
   data?: T | null;
+  token?: string | undefined;
 };
 
 const sendResponse = <T>(res: Response, payload: ISendResponse<T>): void => {
   const responseData: ISendResponse<T> = {
-    statusCode: payload.statusCode,
     success: payload.success,
+    statusCode: payload.statusCode,
     message: payload.message || null,
     meta: payload.meta || null || undefined,
-    data: payload.data || null,
+    data: payload.data,
+    token: payload.token,
   };
 
   res.status(payload.statusCode).json(responseData);
